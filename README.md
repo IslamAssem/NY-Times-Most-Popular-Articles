@@ -14,9 +14,9 @@ clone repo by running gir command
 git clone https://github.com/IslamAssem/NY-Times-Most-PopularArticles
 In project main folder create file ApiKey.properties
 <img src="screenshots/ApiKey.properties location.png" width = 500>
+<\br>
 add you api key in file as you can see the content in screenshot
 API_KEY = "Your_Api_Key_Here"
 <img src="screenshots/ApiKey.properties content.png" width = 500>
 ## Important Notice
 
-In real life project Api key will not be uploaded to github  but in order to be able to run the project I left it unProtected
