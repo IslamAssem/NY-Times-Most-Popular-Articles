@@ -1,0 +1,129 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+def apiPropertiesFile = rootProject.file("ApiKey.properties");
+def apiProperties = new Properties()
+apiProperties.load(new FileInputStream(apiPropertiesFile))
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.nytimes.popular_articles"
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "API_KEY", apiProperties['API_KEY'])
+
+    }
+
+    buildTypes {
+        debug{
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+//        viewBinding true
+        dataBinding true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation deps.kotlin.stdlib
+    implementation deps.kotlin.test
+    implementation deps.support.app_compat
+    implementation deps.support.preferences_ktx
+    implementation deps.support.design
+    implementation deps.support.core_v4
+    implementation deps.support.core_utils
+    implementation deps.support.recyclerview
+    implementation deps.support.cardview
+    implementation deps.support.core_ktx
+    implementation deps.support.activity_ktx
+    implementation deps.constraint_layout
+    testImplementation deps.arch_core.testing
+
+    //------ Navigation --------//
+    implementation deps.navigation.runtime_ktx
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
+    androidTestImplementation  deps.navigation.test
+
+
+    //------ Android Testing Support Library's runner and rules ------//
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.atsl.rules
+    androidTestImplementation deps.atsl.ext_junit
+
+
+    //------ Junit ------//
+    testImplementation  deps.junit
+    testImplementation deps.mockito.core
+//    testImplementation deps.mockito.all
+//    testImplementation deps.mockito.android
+    //------Espresso UI Testing ------//
+    androidTestImplementation deps.espresso.core
+    androidTestImplementation deps.espresso.contrib
+    androidTestImplementation deps.espresso.intents
+    androidTestImplementation deps.espresso.idlingressources
+    debugImplementation deps.support.fragment_testing
+
+//    ------retrofit ------//
+    implementation deps.squareup.picasso
+    implementation deps.squareup.retrofit2
+    implementation deps.squareup.googlegson
+    implementation deps.squareup.converter
+    implementation deps.squareup.okhttp
+    implementation deps.squareup.interceptor
+    implementation deps.squareup.rx
+    implementation deps.squareup.urlconnection
+    //------Glide ------//
+    implementation deps.glide.runtime
+    kapt deps.glide.compiler
+    //------hilt ------//
+    implementation deps.hilt.android
+    kapt deps.hilt.compiler
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
+    kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha03'
+    kaptAndroidTest 'androidx.hilt:hilt-compiler:1.0.0-alpha03'
+
+    //------lifecycle ------//
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.3.0"
+//    implementation 'androidx.lifecycle:lifecycle-extensions:2.3.0'
+    //------coroutines ------//
+    implementation deps.coroutines.core
+   testImplementation deps.coroutines.test
+    implementation deps.coroutines.android
+
+
+    implementation 'com.samigehi:loadingview:1.1'
+    implementation project(path: ':utils')
+//    implementation project(path: ':ImagePicker')
+}

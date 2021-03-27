@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">NY Times Most Popular</string>
+    <string name="nav_header_title">NewYork Times</string>
+    <string name="nav_header_subtitle">support@nytimes.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_home">Most Popular Articles</string>
+    <string name="we_tried_looking_n_found_nothing">We tried looking;\nfound nothing!</string>
+    <string name="slow_or_no_internet_connection_n_nplease_check_your_connection">Slow or no internet connection.\n\nPlease check your connection.</string>
+
+</resources>
