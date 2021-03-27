@@ -10,13 +10,12 @@ items on the list are tapped (a typical master/detail app). You should use Andro
 
 ## How to run it
 clone repo by running gir command
-<\br>
+<br />
 git clone https://github.com/IslamAssem/NY-Times-Most-PopularArticles
 In project main folder create file ApiKey.properties
 <img src="screenshots/ApiKey.properties location.png" width = 500>
-<\br>
+<br />
 add you api key in file as you can see the content in screenshot
 API_KEY = "Your_Api_Key_Here"
 <img src="screenshots/ApiKey.properties content.png" width = 500>
-## Important Notice
 
